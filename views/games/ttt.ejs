@@ -1,0 +1,12 @@
+<% extend('games_layout') %>
+<head>
+    <script src="/javascripts/games/tic_tac_toe.js"></script>
+</head>
+<body>
+<form action="/games/sendValues" id="sendValues" method="post"></form>
+<p>Welcome to <%= title %> page!</p>
+
+<button form="sendValues" hidden="hidden" value="Hello" name="xy" onclick="logme()">Logger :V</button>
+<button onclick="goToUrl('/games')">Go back to games menu</button>
+<button onclick="goToUrl()">Go to main menu</button>
+</body>

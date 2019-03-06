@@ -1,0 +1,21 @@
+<% extend('games_layout') %>
+<head>
+    <% if(stopped) { %> <script> goToUrl('<%= linker%>') </script><%}%>
+        <script src="/javascripts/games/ajax_tic.js"></script>
+</head>
+<body>
+<p>Welcome to <%= title %> page!</p>
+<table id="t">
+    <% for(var i=0; i<backend_board.length; i++) { %>
+        <tr>
+            <% for(var j=0; j<backend_board.length; j++) {%>
+                <% if(backend_board[i][j] === 'E') {%><td id ="<%= i %>,<%= j %>" onclick="parseVals(this.id)"><img src="/images/<%= backend_board[i][j] %>.jpg"/></td><% }%>
+                <% if(backend_board[i][j] !== 'E') { %><td id ="<%= i %>,<%= j %>" ><img src="/images/<%= backend_board[i][j] %>.jpg"/></td><% }%>
+            <% } %>
+        </tr>
+    <% } %>
+</table>
+<button id="restartButton" onclick="restart()">Restart</button>
+<button onclick="goToUrl('/games')">Go to games menu</button>
+<button onclick="goToUrl()">Go to main menu</button>
+</body>

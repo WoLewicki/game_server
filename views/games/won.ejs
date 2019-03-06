@@ -1,0 +1,10 @@
+<% extend('games_layout') %>
+<head>
+    <script src="/javascripts/games/ajax_tic.js"></script>
+</head>
+<body>
+    <h1><%= player %> WON</h1>
+    <a href="/games/ajtt"><button onclick="restart()">Go back to game</button></a>
+    <button onclick="goToUrl('/games')">Go to games menu</button>
+    <button onclick="goToUrl()">Go to main menu</button>
+</body>

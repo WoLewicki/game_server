@@ -1,0 +1,15 @@
+<% extend('games_layout') %>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<p><%= title %></p>
+<p>Welcome to games page! Choose the game you want to play!</p>
+<% games.forEach(game => { %>
+    <button onclick="goToUrl('/games<%= game.url %>')"><%= game.name %></button>
+<% })%>
+<br>
+<br>
+<button onclick="goToUrl()">Go to main menu</button>
+</body>
+
