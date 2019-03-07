@@ -1,0 +1,23 @@
+<% extend('eskulap_layout') %>
+<head>
+    <script src="/javascripts/eskulap/addPatient.js"></script>
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+<% patients.forEach((res) => { %>
+        <h3>Imię: <%= res.name %>, Pesel: <%= res.pesel %> </h3>
+   <% }) %>
+<form>
+    <input type="text" id="name" placeholder="Imię" required />
+    <br>
+    <input type="text" id="pesel" placeholder="Pesel" required />
+    <br>
+    <button type="submit">Dodaj pacjenta</button>
+</form>
+<br>
+<br>
+<br>
+<button onclick="goToEskulapUrl()">Idź do strony głównej Eskulapu</button>
+
+</body>

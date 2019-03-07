@@ -4,10 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
+//DB connection
+mongoose.connect('mongodb+srv://admin:admin@testbase-v8fd4.gcp.mongodb.net/Test?retryWrites=true');
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var gamesRouter = require('./routes/games/games');
 var ajaxtictacRouter = require('./routes/games/ajtt');
@@ -16,6 +21,7 @@ var gogRouter = require('./routes/games/gog');
 var elseRouter = require('./routes/games/else');
 
 var eskulapRouter = require('./routes/eskulap/home');
+var registrationRouter = require('./routes/eskulap/rejestracja');
 
 var app = express();
 
@@ -33,13 +39,15 @@ app.use(bodyParser.json());
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 app.use('/games', gamesRouter);
 app.use('/games/ajtt', ajaxtictacRouter);
 app.use('/games/ttt', tttRouter);
 app.use('/games/gog', gogRouter);
 app.use('/games/else', elseRouter);
+
 app.use('/eskulap', eskulapRouter);
+app.use('/eskulap/rejestracja', registrationRouter);
 
 
 // catch 404 and forward to error handler
